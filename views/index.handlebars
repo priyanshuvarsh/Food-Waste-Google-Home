@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">Food-Buddy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="./index.html">Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./contact.html">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Content -->
+
+<div class="mainContainer">
+  <div id="banner"><img src="/foodbuddyDEMO.jpg"></div>
+  <div class="mainContainer">
+    <div>
+      {{#each data}}
+      {{#if vegetable}}
+      <strong>Vegetable</strong>
+      <ul>
+        <li><strong>X - {{ recordName }} - X</strong></li>
+        <li>Purchased: </strong>{{ moment recorded "from" dfrom}}</li>
+        <li>First Alert In: {{ moment vegFirstAlert "from" dfrom}}</li>
+        <li>Second Alert In: {{ moment vegSecondAlert "from" dfrom}}</li>
+      </ul>
+      {{else if herb}}
+      <strong>Herb</strong>
+      <ul>
+        <li><strong>X - {{ recordName }} - X</strong></li>
+        <li>Purchased: </strong>{{ moment recorded "from" dfrom}}</li>
+        <li>First Alert In: {{ moment herbFirstAlert "from" dfrom}}</li>
+        <li>Second Alert In: {{ moment herbSecondAlert "from" dfrom}}</li>
+      </ul>
+      {{else if meat}}
+      <strong>Meat</strong>
+      <ul>
+        <li><strong>X - {{ recordName }} - X</strong></li>
+        <li>Purchased: </strong>{{ moment recorded "from" dfrom}}</li>
+        <li>First Alert In: {{ moment meatFirstAlert "from" dfrom}}</li>
+        <li>Second Alert In: {{ moment meatSecondAlert "from" dfrom}}</li>
+      </ul>
+      {{else if fish}}
+      <strong>Fish</strong>
+      <ul>
+        <li><strong>X - {{ recordName }} - X</strong></li>
+        <li>Purchased: </strong>{{ moment recorded "from" dfrom}}</li>
+        <li>First Alert In: {{ moment fishFirstAlert "from" dfrom}}</li>
+        <li>Second Alert In: {{ moment fishSecondAlert "from" dfrom}}</li>
+      </ul>
+      {{else if dairy}}
+      <strong>Dairy</strong>
+      <ul>
+        <li><strong>X - {{ recordName }} - X</strong></li>
+        <li>Purchased: </strong>{{ moment recorded "from" dfrom}}</li>
+        <li>First Alert In: {{ moment dairyFirstAlert "from" dfrom}}</li>
+        <li>Second Alert In: {{ moment dairySecondAlert "from" dfrom}}</li>
+      </ul>
+
+      {{/if}}
+      {{/each}}
+    </div>
+  </div>
+</div>
+</div>}
+
+<script type="text/javascript">
+  function runTableQuery() {
+    $.ajax({ url: "/api/data", method: "GET" })
+      .then(function (theData) {
+        console.log("Hello World" + theData);
+      });
+  }
+</script>
